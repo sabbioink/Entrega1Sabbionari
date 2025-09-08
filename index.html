@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TecnoStore - Componentes de Computación</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">TecnoStore</div>
+        <nav class="nav">
+            <ul>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero" data-aos="fade-up">
+        <h1>Equipá tu PC con lo mejor</h1>
+        <p>Componentes de alta calidad para gamers, programadores y profesionales</p>
+    </section>
+    <section id="productos" class="productos">
+        <h2 data-aos="fade-right">Productos destacados</h2>
+        <div class="grid-productos">
+            <div class="producto" data-aos="zoom-in">
+                <img src="https://i.pinimg.com/1200x/c9/04/69/c90469a349d824dc054ceb5c80533071.jpg" alt="Teclado Mecánico">
+                <h3>Teclado Mecánico</h3>
+                <p>$25.000</p>
+            </div>
+            <div class="producto" data-aos="zoom-in">
+                <img src="https://i.pinimg.com/736x/45/52/6d/45526dfdc079ae7de2d47c3229079b30.jpg" alt="Mouse Gamer">
+                <h3>Mouse Gamer</h3>
+                <p>$15.000</p>
+            </div>
+            <div class="producto" data-aos="zoom-in">
+                <img src="https://i.pinimg.com/1200x/99/1d/f9/991df9a44feb497c0588608aa4a13d2d.jpg" alt="Monitor 24''">
+                <h3>Monitor 24''</h3>
+                <p>$80.000</p>
+            </div>
+            <div class="producto" data-aos="zoom-in">
+                <img src="https://i.pinimg.com/736x/21/9a/3f/219a3ff56ad25dbb90dcf84c17915092.jpg" alt="Placa de Video RTX 4060">
+                <h3>Placa de Video RTX 4060</h3>
+                <p>$350.000</p>
+            </div>
+            <div class="producto" data-aos="zoom-in">
+                <img src="https://i.pinimg.com/736x/45/05/17/450517cd4ca14eb9d4b01c8864eb6e0b.jpg" alt="Auriculares Inalámbricos">
+                <h3>Auriculares Inalámbricos</h3>
+                <p>$20.000</p>
+            </div>
+        </div>
+    </section>
+    <section id="nosotros" class="nosotros" data-aos="fade-left">
+        <h2>Sobre Nosotros</h2>
+        <p>En <strong>TecnoStore</strong> nos apasiona la tecnología. Brindamos los mejores productos de computación con
+            garantía y soporte técnico especializado.</p>
+    </section>
+    <section id="contacto" class="contacto" data-aos="fade-up">
+        <h2>Contacto</h2>
+        <form>
+            <input type="text" placeholder="Tu nombre" required>
+            <input type="email" placeholder="Tu email" required>
+            <textarea placeholder="Escribinos tu mensaje..." required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+    <footer class="footer">
+        <p>&copy; 2025 TecnoStore - Todos los derechos reservados</p>
+    </footer>
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>
