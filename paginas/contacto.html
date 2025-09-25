@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - TecnoStore</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">TecnoStore</div>
+        <nav class="nav">
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="contacto-pagina">
+        <div class="contenido-contacto">
+            <h2>Contacto</h2>
+            <p>Envíanos un mensaje con tu opinión, si buscas un producto específico que no tengamos en la tienda, o por alguna consulta sobre tu compra.</p>
+            <form id="form-contacto">
+                <input type="text" id="nombre" placeholder="Tu nombre" required>
+                <input type="email" id="email" placeholder="Tu email" required>
+                <textarea id="mensaje" rows="5" placeholder="Escribinos tu mensaje..." required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 TecnoStore - Todos los derechos reservados</p>
+    </footer>
+
+    <div id="notificaciones"></div>
+    <script src="../js/contacto.js"></script>
+</body>
+</html>

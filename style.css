@@ -3,6 +3,9 @@
     --color-secundario: #222;
     --color-texto: #fff;
     --color-fondo: #f4f4f4;
+    --color-hover: #1b5fbd;
+    --color-notificacion: #2d89ef;
+    --transicion: 0.3s;
 }
 
 * {
@@ -26,6 +29,9 @@ body {
     background: var(--color-principal);
     padding: 15px 30px;
     color: var(--color-texto);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .header .logo {
@@ -42,18 +48,28 @@ body {
 .nav a {
     color: var(--color-texto);
     text-decoration: none;
+    transition: color var(--transicion);
 }
 
+.nav a:hover {
+    color: #ffe600;
+}
 
 .hero {
     text-align: center;
-    padding: 60px 20px;
-    background: #eee;
+    padding: 80px 20px;
+    background: linear-gradient(120deg, #2d89ef, #1b5fbd);
+    color: #fff;
+    transition: background var(--transicion);
 }
 
 .hero h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2rem;
 }
 
 
@@ -73,49 +89,203 @@ body {
     background: #fff;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transition: transform var(--transicion), box-shadow var(--transicion);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .producto img {
     width: 100%;
     border-radius: 10px;
     margin-bottom: 15px;
+    transition: transform var(--transicion);
 }
 
-
-.nosotros,
-.contacto {
-    padding: 50px 20px;
-    text-align: center;
+.producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.25);
 }
 
-
-.contacto form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-width: 400px;
-    margin: auto;
+.producto img:hover {
+    transform: scale(1.05);
 }
 
-.contacto input,
-.contacto textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.producto h3 {
+    margin-bottom: 10px;
 }
 
-.contacto button {
+.producto p {
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.producto button {
     background: var(--color-principal);
     color: #fff;
     border: none;
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    transition: background var(--transicion), transform var(--transicion);
 }
 
-.contacto button:hover {
-    background: #1b5fbd;
+.producto button:hover {
+    background: var(--color-hover);
+    transform: scale(1.05);
+}
+
+
+.carrito {
+    padding: 30px 20px;
+    background: #fff;
+    margin: 40px auto;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: transform var(--transicion);
+}
+
+.carrito h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--color-principal);
+}
+
+.carrito ul {
+    list-style: none;
+    margin-bottom: 15px;
+}
+
+.carrito li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+    border-radius: 5px;
+    transition: background var(--transicion);
+}
+
+.carrito li:hover {
+    background: #f0f0f0;
+}
+
+.carrito li button {
+    background: #ff4d4d;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform var(--transicion);
+}
+
+.carrito li button:hover {
+    transform: scale(1.2);
+}
+
+#btn-finalizar {
+    display: block;
+    margin: 10px auto 0;
+    background: var(--color-principal);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background var(--transicion), transform var(--transicion);
+}
+
+#btn-finalizar:hover {
+    background: var(--color-hover);
+    transform: scale(1.05);
+}
+
+.nosotros {
+    padding: 60px 20px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.nosotros .contenido-nosotros {
+    max-width: 800px;
+}
+
+.nosotros h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--color-principal);
+}
+
+.nosotros p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+.contacto-pagina {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px;
+    min-height: 70vh;
+    background: #f9f9f9;
+    text-align: center;
+}
+
+.contacto-pagina .contenido-contacto {
+    max-width: 700px;
+}
+
+.contacto-pagina h2 {
+    font-size: 2rem;
+    color: var(--color-principal);
+    margin-bottom: 20px;
+}
+
+.contacto-pagina p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+.contacto-pagina form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contacto-pagina input,
+.contacto-pagina textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.contacto-pagina button {
+    background: var(--color-principal);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background var(--transicion), transform var(--transicion);
+}
+
+.contacto-pagina button:hover {
+    background: var(--color-hover);
+    transform: scale(1.05);
 }
 
 
@@ -124,4 +294,45 @@ body {
     padding: 20px;
     background: var(--color-secundario);
     color: #fff;
+}
+
+
+#notificaciones {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 999;
+}
+
+.notificacion {
+    background: var(--color-notificacion);
+    color: #fff;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    opacity: 0.95;
+    animation: aparecer 0.5s ease forwards;
+}
+
+@keyframes aparecer {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 0.95; }
+}
+
+
+.vuelo {
+    position: absolute;
+    z-index: 100;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    pointer-events: none;
+    transition: transform 1s cubic-bezier(0.65, 0.05, 0.36, 1), opacity 1s;
+}
+
+@media (max-width: 768px) {
+    .grid-productos {
+        grid-template-columns: 1fr;
+    }
 }
