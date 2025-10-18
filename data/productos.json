@@ -1,0 +1,75 @@
+[
+    {
+        "id": 1,
+        "nombre": "Teclado Mecánico RGB",
+        "descripcion": "Teclado con retroiluminación RGB, switches blue y estructura metálica.",
+        "precio": 25000,
+        "img": "https://i.pinimg.com/1200x/c9/04/69/c90469a349d824dc054ceb5c80533071.jpg",
+        "categoria": "Periféricos"
+    },
+    {
+        "id": 2,
+        "nombre": "Mouse Gamer Inalámbrico",
+        "descripcion": "Sensor óptico de alta precisión, batería recargable y 7 botones programables.",
+        "precio": 15000,
+        "img": "https://i.pinimg.com/736x/45/52/6d/45526dfdc079ae7de2d47c3229079b30.jpg",
+        "categoria": "Periféricos"
+    },
+    {
+        "id": 3,
+        "nombre": "Monitor 24'' Full HD",
+        "descripcion": "Pantalla LED Full HD de 24 pulgadas, 75Hz, entrada HDMI y VGA.",
+        "precio": 80000,
+        "img": "https://i.pinimg.com/1200x/99/1d/f9/991df9a44feb497c0588608aa4a13d2d.jpg",
+        "categoria": "Monitores"
+    },
+    {
+        "id": 4,
+        "nombre": "Placa de Video RTX 4060",
+        "descripcion": "8GB GDDR6, arquitectura Ada Lovelace, soporte Ray Tracing y DLSS 3.",
+        "precio": 350000,
+        "img": "https://i.pinimg.com/736x/21/9a/3f/219a3ff56ad25dbb90dcf84c17915092.jpg",
+        "categoria": "Componentes"
+    },
+    {
+        "id": 5,
+        "nombre": "Auriculares Inalámbricos",
+        "descripcion": "Bluetooth 5.2, micrófono integrado, cancelación de ruido y estuche de carga.",
+        "precio": 20000,
+        "img": "https://i.pinimg.com/736x/45/05/17/450517cd4ca14eb9d4b01c8864eb6e0b.jpg",
+        "categoria": "Audio"
+    },
+    {
+        "id": 6,
+        "nombre": "Silla Gamer Ergonómica",
+        "descripcion": "Diseño ergonómico, reclinable, con apoyabrazos y base metálica.",
+        "precio": 95000,
+        "img": "https://i.pinimg.com/736x/b7/1d/ad/b71dad748ef4e471054dbb4d4d54f032.jpg",
+        "categoria": "Muebles"
+
+    },
+    {
+        "id": 7,
+        "nombre": "Micrófono USB Profesional",
+        "descripcion": "Micrófono condensador ideal para streaming y grabación, incluye soporte.",
+        "precio": 35000,
+        "img": "https://i.pinimg.com/1200x/f8/fe/6a/f8fe6ad2cb8414b9806b594dba6a1c8f.jpg",
+        "categoria": "Audio"
+    },
+    {
+        "id": 8,
+        "nombre": "Pad gamer USB con RGB",
+        "descripcion": "Pad con luces RGB, con conexion USB tamaño 1.05mts (ancho) por 30cm (largo)",
+        "precio": 7000,
+        "img": "https://i.pinimg.com/736x/4e/b2/74/4eb274694d1b5ba93a08b7eeac5ce8b1.jpg",
+        "categoria": "Periféricos"
+    },
+    {
+        "id": 9,
+        "nombre": "Combo Gamer (Teclado + Mouse + Pad + Auriculares)",
+        "descripcion": "Set completo con iluminación RGB y cable mallado reforzado.",
+        "precio": 48000,
+        "img": "https://i.pinimg.com/736x/17/fb/24/17fb2432ae6f95e704e629368508c7d9.jpg",
+        "categoria": "Periféricos"
+    }
+]

@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TecnoStore - Componentes de Computación</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-</head>
-<body>
 
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TecnoStore - Componentes de Computación</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+</head>
+
+<body>
     <header class="header">
         <div class="logo">TecnoStore</div>
         <nav class="nav">
@@ -22,7 +23,9 @@
 
     <section class="hero" data-aos="fade-up">
         <h1>Equipá tu PC con lo mejor</h1>
-        <p>Componentes de alta calidad para gamers, programadores y profesionales</p>
+        <p>
+            Componentes de alta calidad para gamers, programadores y profesionales
+        </p>
     </section>
 
     <section id="productos" class="productos">
@@ -35,13 +38,56 @@
         <ul id="carrito-lista"></ul>
         <button id="btn-finalizar">Finalizar Compra</button>
     </section>
+    <div id="checkout-modal" class="checkout-modal hidden">
+        <div class="checkout-contenido">
+            <h2>Finalizar Compra</h2>
+            <form id="form-checkout">
+                <input type="text" id="nombre-usuario" placeholder="Nombre" required />
+                <input type="text" id="apellido-usuario" placeholder="Apellido" required />
+                <input type="text" id="localidad" placeholder="Localidad" required />
+                <input type="text" id="direccion" placeholder="Dirección" required />
+
+                <label for="forma-pago">Forma de pago:</label>
+                <select id="forma-pago" required>
+                    <option value="" disabled selected>Seleccionar</option>
+                    <option value="efectivo">Efectivo</option>
+                    <option value="transferencia">Transferencia</option>
+                    <option value="tarjeta">Tarjeta de crédito</option>
+                </select>
+
+                <div id="datos-transferencia" class="hidden">
+                    <p>Alias: TECNOSTORE123</p>
+                    <p>Número de cuenta: 000123456789</p>
+                </div>
+
+                <div id="datos-tarjeta" class="hidden">
+                    <input type="text" id="numero-tarjeta" placeholder="Número de tarjeta" maxlength="16" />
+                    <label for="cuotas">Cuotas (1 a 18):</label>
+                    <input type="number" id="cuotas" min="1" max="18" value="1" />
+                </div>
+
+                <button type="submit">Confirmar Compra</button>
+                <button type="button" id="btn-cancelar">Cancelar</button>
+            </form>
+        </div>
+    </div>
 
     <section id="nosotros" class="nosotros" data-aos="fade-left">
         <div class="contenido-nosotros">
             <h2>Sobre Nosotros</h2>
-            <p>En <strong>TecnoStore</strong> nos apasiona la tecnología. Brindamos los mejores productos de computación con garantía y soporte técnico especializado.</p>
-            <p>Nos enfocamos en ofrecer componentes de alta calidad para gamers, programadores y profesionales que buscan rendimiento y confiabilidad.</p>
-            <p>Nos gusta mantenernos cerca de nuestros clientes, ofreciendo asesoramiento personalizado y atención postventa de excelencia.</p>
+            <p>
+                En <strong>TecnoStore</strong> nos apasiona la tecnología. Brindamos
+                los mejores productos de computación con garantía y soporte técnico
+                especializado.
+            </p>
+            <p>
+                Nos enfocamos en ofrecer componentes de alta calidad para gamers,
+                programadores y profesionales que buscan rendimiento y confiabilidad.
+            </p>
+            <p>
+                Nos gusta mantenernos cerca de nuestros clientes, ofreciendo
+                asesoramiento personalizado y atención postventa de excelencia.
+            </p>
         </div>
     </section>
 
@@ -57,4 +103,5 @@
         AOS.init();
     </script>
 </body>
+
 </html>
