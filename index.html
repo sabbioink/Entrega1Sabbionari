@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TecnoStore - Componentes de Computación</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 </head>
 
 <body>
     <header class="header">
-        <div class="logo">TecnoStore</div>
+        <div class="logo">
+            <img src="./imagen/Logo-tecno-store.png" alt="Logo TecnoStore">
+            <span>TecnoStore</span>
+        </div>
         <nav class="nav">
             <ul>
                 <li><a href="#productos">Productos</a></li>
@@ -21,23 +23,29 @@
         </nav>
     </header>
 
-    <section class="hero" data-aos="fade-up">
+    <section class="hero">
         <h1>Equipá tu PC con lo mejor</h1>
-        <p>
-            Componentes de alta calidad para gamers, programadores y profesionales
-        </p>
+        <p>Componentes de alta calidad para gamers, programadores y profesionales.</p>
     </section>
 
     <section id="productos" class="productos">
-        <h2 data-aos="fade-right">Productos destacados</h2>
+        <h2>Productos destacados</h2>
         <div id="cards-container" class="grid-productos"></div>
     </section>
 
-    <section class="carrito" data-aos="fade-up">
+
+    <section class="carrito">
         <h2>Carrito de Compras</h2>
         <ul id="carrito-lista"></ul>
-        <button id="btn-finalizar">Finalizar Compra</button>
+
+        <div class="carrito-botones">
+            <button id="btn-finalizar">Finalizar Compra</button>
+            <button id="btn-vaciar">Vaciar Carrito</button>
+            <button id="btn-historial">Ver Historial 🧾</button>
+        </div>
     </section>
+
+
     <div id="checkout-modal" class="checkout-modal hidden">
         <div class="checkout-contenido">
             <h2>Finalizar Compra</h2>
@@ -66,28 +74,24 @@
                     <input type="number" id="cuotas" min="1" max="18" value="1" />
                 </div>
 
-                <button type="submit">Confirmar Compra</button>
-                <button type="button" id="btn-cancelar">Cancelar</button>
+                <div class="botones-checkout">
+                    <button type="submit">Confirmar Compra</button>
+                    <button type="button" id="btn-cancelar">Cancelar</button>
+                </div>
             </form>
         </div>
     </div>
 
-    <section id="nosotros" class="nosotros" data-aos="fade-left">
+
+    <section id="nosotros" class="nosotros">
         <div class="contenido-nosotros">
             <h2>Sobre Nosotros</h2>
-            <p>
-                En <strong>TecnoStore</strong> nos apasiona la tecnología. Brindamos
-                los mejores productos de computación con garantía y soporte técnico
-                especializado.
-            </p>
-            <p>
-                Nos enfocamos en ofrecer componentes de alta calidad para gamers,
-                programadores y profesionales que buscan rendimiento y confiabilidad.
-            </p>
-            <p>
-                Nos gusta mantenernos cerca de nuestros clientes, ofreciendo
-                asesoramiento personalizado y atención postventa de excelencia.
-            </p>
+            <p>En <strong>TecnoStore</strong> nos apasiona la tecnología. Brindamos
+                los mejores productos de computación con garantía y soporte técnico especializado.</p>
+            <p>Nos enfocamos en ofrecer componentes de alta calidad para gamers,
+                programadores y profesionales que buscan rendimiento y confiabilidad.</p>
+            <p>Nos gusta mantenernos cerca de nuestros clientes, ofreciendo
+                asesoramiento personalizado y atención postventa de excelencia.</p>
         </div>
     </section>
 
@@ -97,11 +101,9 @@
         <p>&copy; 2025 TecnoStore - Todos los derechos reservados</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script src="./js/script.js" defer></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
 </body>
 
 </html>

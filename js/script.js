@@ -1,13 +1,10 @@
-
-
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 const contenedorProductos = document.getElementById("cards-container");
 const contenedorCarrito = document.getElementById("carrito-lista");
 const btnFinalizar = document.getElementById("btn-finalizar");
+const btnVaciar = document.getElementById("btn-vaciar");
 const notificaciones = document.getElementById("notificaciones");
-
-
 
 function mostrarNotificacion(mensaje) {
     const div = document.createElement("div");
@@ -16,9 +13,6 @@ function mostrarNotificacion(mensaje) {
     notificaciones.appendChild(div);
     setTimeout(() => div.remove(), 3000);
 }
-
-
-
 
 function animacionVuelo(img) {
     const imgFly = img.cloneNode(true);
@@ -45,9 +39,6 @@ function animacionVuelo(img) {
     setTimeout(() => imgFly.remove(), 1000);
 }
 
-
-
-
 function renderizarProductos(productos) {
     contenedorProductos.innerHTML = "";
 
@@ -69,9 +60,6 @@ function renderizarProductos(productos) {
     });
 }
 
-
-
-
 function mostrarCarrito() {
     contenedorCarrito.innerHTML = "";
     carrito.forEach((producto, index) => {
@@ -84,8 +72,6 @@ function mostrarCarrito() {
         contenedorCarrito.appendChild(li);
     });
 }
-
-
 
 function agregarAlCarrito(producto, imagen) {
     carrito.push(producto);
@@ -103,6 +89,36 @@ function eliminarDelCarrito(index) {
 }
 
 
+btnVaciar.addEventListener("click", () => {
+    if (carrito.length === 0) {
+        mostrarNotificacion("El carrito ya está vacío");
+        return;
+    }
+
+    Swal.fire({
+        title: "¿Vaciar carrito?",
+        text: "Se eliminarán todos los productos del carrito.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sí, vaciar",
+        cancelButtonText: "Cancelar"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            carrito = [];
+            localStorage.removeItem("carrito");
+            mostrarCarrito();
+            Swal.fire({
+                title: "Carrito vaciado",
+                text: "Todos los productos fueron eliminados.",
+                icon: "success",
+                timer: 2000,
+                showConfirmButton: false
+            });
+        }
+    });
+});
 
 const checkoutModal = document.getElementById("checkout-modal");
 const formaPagoSelect = document.getElementById("forma-pago");
@@ -110,8 +126,6 @@ const datosTransferencia = document.getElementById("datos-transferencia");
 const datosTarjeta = document.getElementById("datos-tarjeta");
 const btnCancelar = document.getElementById("btn-cancelar");
 const formCheckout = document.getElementById("form-checkout");
-
-
 
 btnFinalizar.addEventListener("click", () => {
     if (carrito.length === 0) {
@@ -121,21 +135,15 @@ btnFinalizar.addEventListener("click", () => {
     checkoutModal.classList.remove("hidden");
 });
 
-
-
 formaPagoSelect.addEventListener("change", () => {
     const forma = formaPagoSelect.value;
     datosTransferencia.classList.toggle("hidden", forma !== "transferencia");
     datosTarjeta.classList.toggle("hidden", forma !== "tarjeta");
 });
 
-
-
 btnCancelar.addEventListener("click", () => {
     checkoutModal.classList.add("hidden");
 });
-
-
 
 formCheckout.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -163,27 +171,42 @@ formCheckout.addEventListener("submit", (e) => {
             mostrarNotificacion("Ingresa datos válidos de tarjeta y cuotas");
             return;
         }
-        detallePago = `Tarjeta (terminada en ${numeroTarjeta.slice(-4)}), ${cuotas} cuota(s) sin interés`;
+        detallePago = `Tarjeta (terminada en ${numeroTarjeta.slice(-4)}), ${cuotas} cuota(s)`;
     } else {
         detallePago = "Efectivo al recibir el pedido";
     }
 
+    const nuevaCompra = {
+        cliente: `${nombre} ${apellido}`,
+        fecha: new Date().toLocaleString(),
+        total,
+        formaPago: detallePago,
+        productos: carrito.map(p => p.nombre)
+    };
+
+    const historial = JSON.parse(localStorage.getItem("historialCompras")) || [];
+    historial.push(nuevaCompra);
+    localStorage.setItem("historialCompras", JSON.stringify(historial));
 
 
-    const mensajeFinal = document.createElement("div");
-    mensajeFinal.classList.add("mensaje-final");
-    mensajeFinal.innerHTML = `
-        <h2>¡Gracias por tu compra, ${nombre} ${apellido}! 🎉</h2>
-        <p><strong>Total:</strong> $${total.toLocaleString("es-AR")}</p>
-        <p><strong>Localidad:</strong> ${localidad}</p>
-        <p><strong>Dirección:</strong> ${direccion}</p>
-        <p><strong>Forma de pago:</strong> ${detallePago}</p>
-        <p>Tu pedido será procesado en las próximas 24 horas.</p>
-    `;
-    document.body.appendChild(mensajeFinal);
-
-    setTimeout(() => mensajeFinal.remove(), 8000); // se quita tras 8 seg
-
+    Swal.fire({
+        title: `¡Gracias por tu compra, ${nombre}!`,
+        html: `
+            <p><strong>Total:</strong> $${total.toLocaleString("es-AR")}</p>
+            <p><strong>Forma de pago:</strong> ${detallePago}</p>
+            <p>Tu pedido será procesado pronto.</p>
+        `,
+        icon: "success",
+        confirmButtonText: "Aceptar",
+        showCancelButton: true,
+        cancelButtonText: "Ver historial",
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#6c757d"
+    }).then((result) => {
+        if (result.dismiss === Swal.DismissReason.cancel) {
+            mostrarHistorialCompras();
+        }
+    });
 
     carrito = [];
     localStorage.setItem("carrito", JSON.stringify(carrito));
@@ -194,12 +217,36 @@ formCheckout.addEventListener("submit", (e) => {
     datosTarjeta.classList.add("hidden");
 });
 
+function mostrarHistorialCompras() {
+    const historial = JSON.parse(localStorage.getItem("historialCompras")) || [];
+    if (historial.length === 0) {
+        Swal.fire("Historial vacío", "Todavía no hay compras registradas.", "info");
+        return;
+    }
+
+    const contenido = historial.map((c, i) => `
+        <div style="text-align:left; margin-bottom:10px; border-bottom:1px solid #ccc; padding-bottom:6px;">
+            <strong>Compra #${i + 1}</strong><br>
+            <small>${c.fecha}</small><br>
+            Cliente: ${c.cliente}<br>
+            Total: $${c.total.toLocaleString("es-AR")}<br>
+            Pago: ${c.formaPago}<br>
+            Productos: ${c.productos.join(", ")}
+        </div>
+    `).join("");
+
+    Swal.fire({
+        title: "Historial de compras",
+        html: `<div style="max-height:300px; overflow:auto;">${contenido}</div>`,
+        width: 600,
+        confirmButtonText: "Cerrar",
+        confirmButtonColor: "#3085d6"
+    });
+}
 
 fetch("./data/productos.json")
     .then(response => response.json())
     .then(productos => renderizarProductos(productos))
     .catch(err => console.error("Error al cargar productos:", err));
 
-
-    
 mostrarCarrito();
