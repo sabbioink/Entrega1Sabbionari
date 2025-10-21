@@ -1,109 +1,93 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TecnoStore - Componentes de Computación</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>TecnoStore - Tienda Gamer</title>
     <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
     <header class="header">
         <div class="logo">
-            <img src="./imagen/Logo-tecno-store.png" alt="Logo TecnoStore">
+            <img src="./imagen/Logo-tecno-store.png" alt="TecnoStore" />
             <span>TecnoStore</span>
         </div>
         <nav class="nav">
             <ul>
                 <li><a href="#productos">Productos</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#carrito">Carrito</a></li>
                 <li><a href="./paginas/contacto.html">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="hero">
-        <h1>Equipá tu PC con lo mejor</h1>
-        <p>Componentes de alta calidad para gamers, programadores y profesionales.</p>
+        <h1>Bienvenido a TecnoStore</h1>
+        <p>Todo lo que un gamer necesita, al alcance de un click.</p>
     </section>
 
     <section id="productos" class="productos">
-        <h2>Productos destacados</h2>
+        <h2>Nuestros Productos</h2>
         <div id="cards-container" class="grid-productos"></div>
     </section>
 
-
-    <section class="carrito">
-        <h2>Carrito de Compras</h2>
+    <section id="carrito" class="carrito">
+        <h2>Mi Carrito</h2>
         <ul id="carrito-lista"></ul>
-
         <div class="carrito-botones">
             <button id="btn-finalizar">Finalizar Compra</button>
             <button id="btn-vaciar">Vaciar Carrito</button>
-            <button id="btn-historial">Ver Historial 🧾</button>
-        </div>
-    </section>
-
-
-    <div id="checkout-modal" class="checkout-modal hidden">
-        <div class="checkout-contenido">
-            <h2>Finalizar Compra</h2>
-            <form id="form-checkout">
-                <input type="text" id="nombre-usuario" placeholder="Nombre" required />
-                <input type="text" id="apellido-usuario" placeholder="Apellido" required />
-                <input type="text" id="localidad" placeholder="Localidad" required />
-                <input type="text" id="direccion" placeholder="Dirección" required />
-
-                <label for="forma-pago">Forma de pago:</label>
-                <select id="forma-pago" required>
-                    <option value="" disabled selected>Seleccionar</option>
-                    <option value="efectivo">Efectivo</option>
-                    <option value="transferencia">Transferencia</option>
-                    <option value="tarjeta">Tarjeta de crédito</option>
-                </select>
-
-                <div id="datos-transferencia" class="hidden">
-                    <p>Alias: TECNOSTORE123</p>
-                    <p>Número de cuenta: 000123456789</p>
-                </div>
-
-                <div id="datos-tarjeta" class="hidden">
-                    <input type="text" id="numero-tarjeta" placeholder="Número de tarjeta" maxlength="16" />
-                    <label for="cuotas">Cuotas (1 a 18):</label>
-                    <input type="number" id="cuotas" min="1" max="18" value="1" />
-                </div>
-
-                <div class="botones-checkout">
-                    <button type="submit">Confirmar Compra</button>
-                    <button type="button" id="btn-cancelar">Cancelar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-
-    <section id="nosotros" class="nosotros">
-        <div class="contenido-nosotros">
-            <h2>Sobre Nosotros</h2>
-            <p>En <strong>TecnoStore</strong> nos apasiona la tecnología. Brindamos
-                los mejores productos de computación con garantía y soporte técnico especializado.</p>
-            <p>Nos enfocamos en ofrecer componentes de alta calidad para gamers,
-                programadores y profesionales que buscan rendimiento y confiabilidad.</p>
-            <p>Nos gusta mantenernos cerca de nuestros clientes, ofreciendo
-                asesoramiento personalizado y atención postventa de excelencia.</p>
+            <button id="btn-historial">Ver Historial</button>
         </div>
     </section>
 
     <div id="notificaciones"></div>
 
+    <div id="checkout-modal" class="checkout-modal hidden">
+        <div class="checkout-contenido">
+            <h2>Finalizar Compra</h2>
+            <form id="form-checkout">
+                <label for="nombre-usuario">Nombre</label>
+                <input type="text" id="nombre-usuario" required />
+                <label for="apellido-usuario">Apellido</label>
+                <input type="text" id="apellido-usuario" required />
+                <label for="localidad">Localidad</label>
+                <input type="text" id="localidad" required />
+                <label for="direccion">Dirección</label>
+                <input type="text" id="direccion" required />
+                <label for="forma-pago">Forma de Pago</label>
+                <select id="forma-pago">
+                    <option value="">Seleccionar</option>
+                    <option value="efectivo">Efectivo</option>
+                    <option value="transferencia">Transferencia</option>
+                    <option value="tarjeta">Tarjeta</option>
+                </select>
+
+                <div id="datos-transferencia" class="hidden">
+                    <p>Alias: Sabbio.ink.tattoo</p>
+                </div>
+                <div id="datos-tarjeta" class="hidden">
+                    <label for="numero-tarjeta">Número de tarjeta</label>
+                    <input type="text" id="numero-tarjeta" />
+                    <label for="cuotas">Cuotas</label>
+                    <input type="number" id="cuotas" min="1" max="18" />
+                </div>
+
+                <button type="submit">Confirmar Compra</button>
+                <button type="button" id="btn-cancelar">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
     <footer class="footer">
-        <p>&copy; 2025 TecnoStore - Todos los derechos reservados</p>
+        <p>&copy; 2025 TecnoStore. Todos los derechos reservados.</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <script src="./js/script.js" defer></script>
+    <script src="./js/script.js"></script>
 </body>
 
 </html>
