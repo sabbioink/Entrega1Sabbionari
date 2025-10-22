@@ -244,6 +244,11 @@ btnHistorial.addEventListener("click",mostrarHistorialCompras);
 fetch("./data/productos.json")
     .then(res=>res.json())
     .then(productos=>renderizarProductos(productos))
-    .catch(err=>console.error("Error al cargar productos:",err));
+    .catch(_=>Swal.fire({
+        title:"Error en base de datos",
+        html:`<div style="max-height:300px; overflow:auto;">La base de datos fue alterada</div>`,
+        width:600,
+        confirmButtonText:"Cerrar"
+    }));
 
 mostrarCarrito();
