@@ -60,7 +60,7 @@ function renderizarProductos(productos){
 
 function mostrarCarrito(){
     contenedorCarrito.innerHTML="";
-    carrito.forEach((producto,index)=>{
+    _.forEach(carrito,(producto,index)=>{
         const li = document.createElement("li");
         li.innerHTML=`
             ${producto.nombre} - $${producto.precio.toLocaleString("es-AR")} x 
@@ -73,7 +73,7 @@ function mostrarCarrito(){
         contenedorCarrito.appendChild(li);
     });
 
-    document.querySelectorAll(".btn-cant").forEach(btn=>{
+    _.forEach(document.querySelectorAll(".btn-cant"),(btn)=>{
         btn.addEventListener("click", ()=>{
             const index = btn.dataset.index;
             if(btn.dataset.action==="mas") carrito[index].cantidad++;
@@ -86,7 +86,7 @@ function mostrarCarrito(){
         });
     });
 
-    document.querySelectorAll(".btn-eliminar").forEach(btn=>{
+    _.forEach(document.querySelectorAll(".btn-eliminar"),(btn)=>{
         btn.addEventListener("click", ()=>{
             const index = btn.dataset.index;
             carrito.splice(index,1);
@@ -220,7 +220,7 @@ function mostrarHistorialCompras(){
     const historial = JSON.parse(localStorage.getItem("historialCompras"))||[];
     if(historial.length===0){ Swal.fire("Historial vacío","Todavía no hay compras registradas.","info"); return; }
 
-    const contenido = historial.map((c,i)=>`
+    const contenido = _.map(historial,(c,i)=>`
         <div style="text-align:left; margin-bottom:10px; border-bottom:1px solid #ccc; padding-bottom:6px;">
             <strong>Compra #${i+1}</strong><br>
             <small>${c.fecha}</small><br>
