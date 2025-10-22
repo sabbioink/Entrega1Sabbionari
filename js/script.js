@@ -1,3 +1,4 @@
+
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
 const contenedorProductos = document.getElementById("cards-container");
@@ -41,7 +42,7 @@ function animacionVuelo(img){
 
 function renderizarProductos(productos){
     contenedorProductos.innerHTML="";
-    productos.forEach((producto,index)=>{
+    _.forEach(productos,(producto,index)=>{
         const card = document.createElement("div");
         card.classList.add("producto");
         card.innerHTML=`
@@ -187,7 +188,7 @@ formCheckout.addEventListener("submit",(e)=>{
         fecha:new Date().toLocaleString(),
         total,
         formaPago:detallePago,
-        productos: carrito.map(p=>`${p.nombre} x${p.cantidad}`)
+        productos: _.map(carrito,()=> {p=>`${p.nombre} x${p.cantidad}`})
     };
 
     const historial = JSON.parse(localStorage.getItem("historialCompras"))||[];
